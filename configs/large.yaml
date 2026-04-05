@@ -1,0 +1,42 @@
+# =============================================
+# Shulker Code — LARGE Config (~7B params)
+# Best for: A100/H100, Multi-GPU setups
+# Developed by @kopeedev / CyeroX Development
+# =============================================
+
+model:
+  name: "shulker-large"
+  vocab_size: 32000
+  hidden_size: 4096
+  num_layers: 32
+  num_heads: 32
+  num_kv_heads: 8          # GQA: 4 queries per KV head (like LLaMA)
+  intermediate_size: 11008
+  max_seq_len: 8192
+  dropout: 0.0             # No dropout for large models
+  rope_theta: 500000.0     # Extended RoPE for longer context
+  tie_embeddings: false
+
+training:
+  batch_size: 4
+  gradient_accumulation_steps: 16
+  learning_rate: 3e-5
+  weight_decay: 0.1
+  max_grad_norm: 1.0
+  warmup_steps: 5000
+  max_steps: 500000
+  save_steps: 5000
+  eval_steps: 2500
+  fp16: false
+  bf16: true
+  fsdp: true               # Fully Sharded Data Parallel
+  fsdp_sharding_strategy: "FULL_SHARD"
+  dataloader_workers: 8
+
+inference:
+  device: "auto"
+  quantization: null       # Use "int8" or "int4" for lower VRAM
+  max_new_tokens: 4096
+  temperature: 0.6
+  top_k: 40
+  top_p: 0.90

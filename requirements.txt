@@ -1,0 +1,46 @@
+# =============================================
+# Shulker Code — Requirements
+# Developed by @kopeedev / CyeroX Development
+# =============================================
+
+# Core Deep Learning
+torch>=2.1.0
+torchvision>=0.16.0
+
+# Tokenization
+tokenizers>=0.15.0
+sentencepiece>=0.1.99
+
+# Training Utilities
+transformers>=4.36.0       # For pretrained tokenizer base
+accelerate>=0.25.0         # Multi-GPU / mixed precision
+deepspeed>=0.12.0          # DeepSpeed ZeRO optimization (optional)
+peft>=0.7.0                # LoRA / PEFT fine-tuning
+bitsandbytes>=0.41.0       # INT8 / 4-bit quantization
+
+# Data Processing
+datasets>=2.15.0           # HuggingFace datasets
+numpy>=1.24.0
+tqdm>=4.66.0
+
+# Web UI
+fastapi>=0.104.0
+uvicorn>=0.24.0
+websockets>=12.0
+
+# Config Management
+pyyaml>=6.0
+omegaconf>=2.3.0
+
+# Utilities
+rich>=13.7.0               # Beautiful CLI output
+click>=8.1.0               # CLI argument parsing
+psutil>=5.9.0              # Hardware info
+colorama>=0.4.6            # Terminal colors
+
+# Code Analysis (AST features)
+tree-sitter>=0.20.4        # AST parsing for code
+
+# Optional: Monitoring
+# wandb>=0.16.0            # Weights & Biases logging
+# tensorboard>=2.15.0      # TensorBoard logging

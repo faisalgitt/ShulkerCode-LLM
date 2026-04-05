@@ -1,0 +1,40 @@
+# =============================================
+# Shulker Code — SMALL Config (~125M params)
+# Best for: Single GPU 4-8GB, laptop use
+# Developed by @kopeedev / CyeroX Development
+# =============================================
+
+model:
+  name: "shulker-small"
+  vocab_size: 32000
+  hidden_size: 768
+  num_layers: 12
+  num_heads: 12
+  num_kv_heads: 12
+  intermediate_size: 3072
+  max_seq_len: 2048
+  dropout: 0.1
+  rope_theta: 10000.0
+  tie_embeddings: true
+
+training:
+  batch_size: 16
+  gradient_accumulation_steps: 2
+  learning_rate: 2e-4
+  weight_decay: 0.1
+  max_grad_norm: 1.0
+  warmup_steps: 500
+  max_steps: 50000
+  save_steps: 1000
+  eval_steps: 500
+  fp16: true
+  bf16: false
+  dataloader_workers: 4
+
+inference:
+  device: "auto"
+  quantization: null
+  max_new_tokens: 1024
+  temperature: 0.7
+  top_k: 50
+  top_p: 0.95

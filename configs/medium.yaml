@@ -1,0 +1,40 @@
+# =============================================
+# Shulker Code — MEDIUM Config (~1.3B params)
+# Best for: RTX 3080/3090, 16-24GB VRAM
+# Developed by @kopeedev / CyeroX Development
+# =============================================
+
+model:
+  name: "shulker-medium"
+  vocab_size: 32000
+  hidden_size: 2048
+  num_layers: 24
+  num_heads: 16
+  num_kv_heads: 8          # GQA: 2 queries per KV head
+  intermediate_size: 8192
+  max_seq_len: 4096
+  dropout: 0.05
+  rope_theta: 10000.0
+  tie_embeddings: false
+
+training:
+  batch_size: 8
+  gradient_accumulation_steps: 8
+  learning_rate: 1e-4
+  weight_decay: 0.1
+  max_grad_norm: 1.0
+  warmup_steps: 2000
+  max_steps: 100000
+  save_steps: 2000
+  eval_steps: 1000
+  fp16: false
+  bf16: true               # BF16 preferred for stability
+  dataloader_workers: 8
+
+inference:
+  device: "auto"
+  quantization: null
+  max_new_tokens: 2048
+  temperature: 0.7
+  top_k: 40
+  top_p: 0.92
